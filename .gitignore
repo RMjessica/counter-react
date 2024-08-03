@@ -1,38 +1,35 @@
-# ignore all files starting with .
+# Ignore all files starting with a dot
 .*
 
-# track this file .gitignore (i.e. do NOT ignore it)
+# Explicitly track the .gitignore file itself
 !.gitignore
-!.gitpod.yml
-!.github
-php_errorlog
-.log
 
-# track this file .gitignore (i.e. do NOT ignore it)
+# Explicitly track GitHub-related files
+!.github/
+
+# Track essential configuration files
 !composer.json
 !webpack.config.js
 !package.json
-!webpack.production.js
-!webpack.development.js
-
-# track readme.md in the root (i.e. do NOT ignore it)
 !README.md
 
-# ignore OS generated files
+# Ignore OS-generated files
 ehthumbs.db
 Thumbs.db
 
-# ignore Editor files
+# Ignore editor and IDE files
 *.sublime-project
 *.sublime-workspace
 *.komodoproject
+.idea/
+.vscode/
 
-# ignore log files and databases
+# Ignore log files and databases
 *.log
 *.sql
 *.sqlite
 
-# ignore compiled files
+# Ignore compiled files
 *.com
 *.class
 *.dll
@@ -40,7 +37,7 @@ Thumbs.db
 *.o
 *.so
 
-# ignore packaged files
+# Ignore packaged files
 *.7z
 *.dmg
 *.gz
@@ -50,17 +47,18 @@ Thumbs.db
 *.tar
 *.zip
 
-# ignore node/grunt dependency directories
+# Ignore node_modules directory
 node_modules/
 
-# ignore the dist directory were our bundle files are going to be
+# Ignore build and distribution directories
 public/*
 !public/index.html
 
 dist/*
 !dist/index.html
 
+# Track certain hidden files if needed
 !.gitkeep
 !.htaccess
 !.eslintrc
-.now
+.now/
