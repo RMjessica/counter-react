@@ -1,17 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var PrettierPlugin = require("prettier-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 const port = 3000;
-let publicUrl = `ws://localhost:${port}/ws`;
-if(process.env.GITPOD_WORKSPACE_URL){
-  const [schema, host] = process.env.GITPOD_WORKSPACE_URL.split('://');
-  publicUrl = `wss://${port}-${host}/ws`;
-}
-console.log("publicUrl", publicUrl)
+const publicUrl = `ws://localhost:${port}/ws`;
+
+console.log("publicUrl", publicUrl);
 
 module.exports = {
   entry: [
@@ -63,23 +59,9 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    // new ESLintPlugin({
-    //   files: path.resolve(__dirname, "src"),
-    // }),
     new HtmlWebpackPlugin({
-        favicon: '4geeks.ico',
+        favicon: '',
         template: 'template.html'
-    }),
-    new PrettierPlugin({
-      parser: "babel",
-      printWidth: 80,             // Specify the length of line that the printer will wrap on.
-      tabWidth: 4,                // Specify the number of spaces per indentation-level.
-      useTabs: true,              // Indent lines with tabs instead of spaces.
-      bracketSpacing: true,
-      extensions: [ ".js", ".jsx" ],
-      jsxBracketSameLine: true,
-      semi: true,                 // Print semicolons at the ends of statements.
-      encoding: 'utf-8'           // Which encoding scheme to use on files
-    }),
+    })
   ]
 };
